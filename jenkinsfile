@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Pull code from Git
+                git 'https://github.com/your-username/my-app.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                // Install Node.js dependencies
+                sh 'npm install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run tests
+                sh 'npm test'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // For Node.js, just ensure code is ready
+                echo 'Build stage - ready to deploy'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Simulate deployment
+                echo 'Deploying app...'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline finished'
+        }
+    }
+}
